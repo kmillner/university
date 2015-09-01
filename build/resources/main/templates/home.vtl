@@ -9,7 +9,7 @@
       <input id="name" name="name" type="text">
 
       <label for="enrollment_date">Date of Enrollment</label>
-      <input id="enrollment_date" name="enrollment_date" type="text">
+      <input id="enrollment_date" name="enrollment_date" type="date">
 
 
       <button type="submit">Add Student</button>
@@ -27,14 +27,31 @@
     </form>
 
     <h1>View Students</h1>
+
+  <table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Enrollment Date</td>
+  </tr>
     #foreach ($student in $students)
-      <li><a href="/students/$student.getId()">$student.getName()</a></li>
-      <li><a href="/students/$student.getId()">$student.getEnrollmentDate()</a></li>
+      <td><a href="/students/$student.getId()">$student.getName()</a></td>
+      <td><a href="/students/$student.getId()">$student.getEnrollmentDate()</a></td>
+    </tr>
     #end
+  </table>
 
     <h1>View Courses</h1>
+
+    <table class="table table-striped">
+    <tr>
+      <td>Name</td>
+      <td>Course Number</td>
+    </tr>
     #foreach ($course in $courses)
-      <li><a href="/courses/$course.getId()">$course.getTitle()</a></li>
-      <li><a href="/courses/$course.getId()">$course.getCourseNumber()</a></li>
+      <td><a href="/courses/$course.getId()">$course.getTitle()</a></td>
+      <td><a href="/courses/$course.getId()">$course.getCourseNumber()</a></td>
+    </tr>
     #end
+  </table>
+
 </body>
