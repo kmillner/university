@@ -94,32 +94,29 @@ public class Student {
         String sql = "INSERT INTO student_courses (course_id, student_id) VALUES (:course_id, :student_id)";
         con.createQuery(sql)
         .addParameter("course_id", course.getId())
-        .addParameter("Student_id", this.getId())
+        .addParameter("student_id", this.getId())
         .executeUpdate();
       }
     }
-  //
-  // public ArrayList<Course> getCourses() {
-  //   try(Connection con = DB.sql2o.open()){
-  //     String sql = "SELECT course_id FROM student_courses WHERE Student_id = :Student_id";
-  //     List<Integer> courseIds = con.createQuery(sql)
-  //     .addParameter("Student_id", this.getId())
-  //     .executeAndFetch(Integer.class);
-  //
-  //     ArrayList<Course> courses = new ArrayList<Course>();
-  //
-  //     for (Integer courseId : courseIds) {
-  //         String StudentQuery = "Select * From courses WHERE id = :courseId";
-  //         course course = con.createQuery(StudentQuery)
-  //           .addParameter("courseId", courseId)
-  //           .executeAndFetchFirst(course.class);
-  //         courses.add(course);
-  //     }
-  //     return courses;
-  //   }
-  // }
-  //
-  // public void completed() {
-  //   if true
-  // }
+
+  public ArrayList<Course> getCourses() {
+    try(Connection con = DB.sql2o.open()){
+      String sql = "SELECT course_id FROM student_courses WHERE Student_id = :Student_id";
+      List<Integer> courseIds = con.createQuery(sql)
+      .addParameter("Student_id", this.getId())
+      .executeAndFetch(Integer.class);
+
+      ArrayList<Course> courses = new ArrayList<Course>();
+
+      for (Integer courseId : courseIds) {
+          String StudentQuery = "Select * From courses WHERE id = :courseId";
+          Course course = con.createQuery(StudentQuery)
+            .addParameter("courseId", courseId)
+            .executeAndFetchFirst(Course.class);
+          courses.add(course);
+      }
+      return courses;
+    }
+  }
+
 }

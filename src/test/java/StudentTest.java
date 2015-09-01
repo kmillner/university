@@ -43,31 +43,31 @@ public class StudentTest {
     assertEquals(savedStudent.getName(), "Jake");
   }
 
-  // @Test
-  // public void addCourse_addsCourseToStudent() {
-  //   Course myCourse = new Course ("Intro to Bio");
-  //   myCourse.save();
-  //
-  //   Student myStudent = new Student("Jake", "0915");
-  //   myStudent.save();
-  //
-  //   myStudent.addCourse(myCourse);
-  //   Course savedCourse = myStudent.getCourses().get(0);
-  //   assertTrue(myCourse.equals(savedCourse));
-  // }
-  //
-  // @Test
-  // public void getCourses_returnsAllCourses_ArrayList() {
-  //   Course myCourse = new Course("Intro to Bio");
-  //   myCourse.save();
-  //
-  //   Student myStudent = new Student("Jake", "0915");
-  //   myStudent.save();
-  //
-  //   myStudent.addCourse(myCourse);
-  //   List savedCourses = myStudent.getCourses();
-  //   assertEquals(savedCourses.size(), 1);
-  // }
+  @Test
+  public void addCourse_addsCourseToStudent() {
+    Course myCourse = new Course ("Intro to Bio", 1);
+    myCourse.save();
+
+    Student myStudent = new Student("Jake", "0915");
+    myStudent.save();
+
+    myStudent.addCourse(myCourse);
+    Course savedCourse = myStudent.getCourses().get(0);
+    assertTrue(myCourse.equals(savedCourse));
+  }
+
+  @Test
+  public void getCourses_returnsAllCourses_ArrayList() {
+    Course myCourse = new Course("Intro to Bio", 1);
+    myCourse.save();
+
+    Student myStudent = new Student("Jake", "0915");
+    myStudent.save();
+
+    myStudent.addCourse(myCourse);
+    List savedCourses = myStudent.getCourses();
+    assertEquals(savedCourses.size(), 1);
+  }
   //
   // @Test
   // public void delete_deletesAllStudentsAndListsAssociations() {

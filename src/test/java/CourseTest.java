@@ -35,19 +35,19 @@ public class CourseTest {
     assertTrue(myCourse.equals(savedCourse));
   }
 
- //  @Test
- //  public void addStudent_addsStudentToCourse() {
- //    Course myCourse = new Course("Intro to Bio");
- //    myCourse.save();
- //
- //    Student myStudent = new Student("Jake");
- //    myStudent.save();
- //
- //    myCourse.addStudent(myStudent);
- //    Student savedStudent = myCourse.getStudents().get(0);
- //    assertTrue(myStudent.equals(savedStudent));
- // }
- //
+  @Test
+  public void addStudent_addsStudentToCourse() {
+    Course myCourse = new Course("Intro to Bio", 1);
+    myCourse.save();
+
+    Student myStudent = new Student("Jake", "0915");
+    myStudent.save();
+
+    myCourse.addStudent(myStudent);
+    Student savedStudent = myCourse.getStudents().get(0);
+    assertTrue(myStudent.equals(savedStudent));
+ }
+
  //   @Test
  //   public void getStudents_returnsAllStudents_ArrayList() {
  //     Course myCourse = new Course("Intro to Bio");

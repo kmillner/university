@@ -73,25 +73,25 @@ public class Course {
     }
   }
 
-  // public ArrayList<Student> getStudents() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql ="SELECT task_id FROM student_courses WHERE course_id = :course_id";
-  //     List<Integer> taskIds = con.createQuery(sql)
-  //       .addParameter("course_id", this.getId())
-  //       .executeAndFetch(Integer.class);
-  //
-  //     ArrayList<Student> student = new ArrayList<Student>();
-  //
-  //     for (Integer studentId : studentIds) {
-  //       String taskQuery = "Select * From student WHERE id = :studentId";
-  //       Student student = con.createQuery(taskQuery)
-  //         .addParameter("studentId", studentId)
-  //         .executeAndFetchFirst(Student.class);
-  //         student.add(student);
-  //     }
-  //     return student;
-  //   }
-  // }
+  public ArrayList<Student> getStudents() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql ="SELECT student_id FROM student_courses WHERE course_id = :course_id";
+      List<Integer> studentIds = con.createQuery(sql)
+        .addParameter("course_id", this.getId())
+        .executeAndFetch(Integer.class);
+
+      ArrayList<Student> students = new ArrayList<Student>();
+
+      for (Integer studentId : studentIds) {
+        String studentQuery = "Select * From students WHERE id = :studentId";
+        Student student = con.createQuery(studentQuery)
+          .addParameter("studentId", studentId)
+          .executeAndFetchFirst(Student.class);
+          students.add(student);
+      }
+      return students;
+    }
+  }
   //
   // public void delete() {
   //   try(Connection con = DB.sql2o.open()) {
