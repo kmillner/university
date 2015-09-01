@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AppIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-01T18:27:13" hostname="epicodus-104.local" time="0.164">
+<testsuite name="AppIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-01T19:03:55" hostname="epicodus-104.local" time="0.167">
   <properties/>
-  <testcase name="rootTest" classname="AppIntegrationTest" time="0.164"/>
+  <testcase name="rootTest" classname="AppIntegrationTest" time="0.167"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

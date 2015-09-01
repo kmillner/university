@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CourseTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2015-09-01T18:27:13" hostname="epicodus-104.local" time="0.126">
+<testsuite name="CourseTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2015-09-01T19:03:55" hostname="epicodus-104.local" time="0.129">
   <properties/>
-  <testcase name="equals_returnsTrueIfNamesAretheSame" classname="CourseTest" time="0.051"/>
-  <testcase name="all_emptyAtFirst" classname="CourseTest" time="0.032"/>
-  <testcase name="save_savesIntoDatabase_true" classname="CourseTest" time="0.025"/>
-  <testcase name="find_findCourseInDatabase_true" classname="CourseTest" time="0.017"/>
+  <testcase name="equals_returnsTrueIfNamesAretheSame" classname="CourseTest" time="0.059"/>
+  <testcase name="all_emptyAtFirst" classname="CourseTest" time="0.034"/>
+  <testcase name="save_savesIntoDatabase_true" classname="CourseTest" time="0.018"/>
+  <testcase name="find_findCourseInDatabase_true" classname="CourseTest" time="0.016"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

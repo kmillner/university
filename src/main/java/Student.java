@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Student {
   private int id;
   private String name;
+  private String enrollment_date;
 
   public int getId() {
     return id;
@@ -14,8 +15,13 @@ public class Student {
     return name;
   }
 
-  public Student(String name) {
+  public String getEnrollmentDate(){
+    return enrollment_date;
+  }
+
+  public Student(String name, String enrollment_date) {
     this.name = name;
+    this.enrollment_date = enrollment_date;
   }
 
   @Override
@@ -25,12 +31,13 @@ public class Student {
     } else {
       Student newStudent = (Student) otherStudent;
       return this.getName().equals(newStudent.getName()) &&
-             this.getId() == newStudent.getId();
+             this.getId() == newStudent.getId() &&
+             this.getEnrollmentDate().equals(newStudent.getEnrollmentDate());
     }
   }
 
   public static List<Student> all() {
-    String sql = "SELECT id, name FROM students";
+    String sql = "SELECT id, name, enrollment_date FROM students";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Student.class);
     }
@@ -38,9 +45,10 @@ public class Student {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO students(name) VALUES (:name)";
+      String sql = "INSERT INTO students(name, enrollment_date) VALUES (:name, :enrollment_date)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", name)
+        .addParameter("enrollment_date", enrollment_date)
         .executeUpdate()
         .getKey();
     }
@@ -56,12 +64,13 @@ public class Student {
     }
   }
 
-  public void update(String name) {
+  public void update(String name, int enrollment_date) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE students SET name = :name WHERE id = :id";
+      String sql = "UPDATE students SET (name, enrollment_date) = (:name, :enrollment_date) WHERE id = :id";
       con.createQuery(sql)
         .addParameter("name", name)
         .addParameter("id", id)
+        .addParameter("enrollment_date", enrollment_date)
         .executeUpdate();
     }
   }
