@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AppIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-01T20:41:47" hostname="epicodus-104.local" time="0.171">
+<testsuite name="AppIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-01T21:35:02" hostname="epicodus-104.local" time="0.341">
   <properties/>
-  <testcase name="rootTest" classname="AppIntegrationTest" time="0.171"/>
+  <testcase name="rootTest" classname="AppIntegrationTest" time="0.341"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[[Thread-4] INFO spark.webserver.SparkServer - == Spark has ignited ...
+[Thread-4] INFO spark.webserver.SparkServer - >> Listening on 0.0.0.0:4567
+[Thread-4] INFO org.eclipse.jetty.server.Server - jetty-9.0.2.v20130417
+[Thread-4] INFO org.eclipse.jetty.server.ServerConnector - Started ServerConnector@11e9fc{HTTP/1.1}{0.0.0.0:4567}
+[Test worker] INFO spark.webserver.SparkServer - >>> Spark shutting down ...
+[Test worker] INFO org.eclipse.jetty.server.Server - Graceful shutdown org.eclipse.jetty.server.Server@2fb663e4 by 
+[Test worker] INFO org.eclipse.jetty.server.ServerConnector - Stopped ServerConnector@11e9fc{HTTP/1.1}{0.0.0.0:4567}
+[Test worker] INFO spark.webserver.SparkServer - done
+]]></system-err>
 </testsuite>

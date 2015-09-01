@@ -1,10 +1,40 @@
 <head>
-    <title>To Do List</title>
+    <title>University Registrar</title>
 </head>
 <body>
-    <h1>Welcome to To Do List</h1>
+    <h1>Add Student</h1>
 
-    <h3><a href="/categories">Add or view a category</a></h3>
-    <h3><a href="/tasks">Add or view a task</a></h3>
+    <form action="/students" method="post">
+      <label for="name">Student Name</label>
+      <input id="name" name="name" type="text">
 
+      <label for="enrollment_date">Date of Enrollment</label>
+      <input id="enrollment_date" name="enrollment_date" type="text">
+
+
+      <button type="submit">Add Student</button>
+    </form>
+    <h1>Add Course</h1>
+
+    <form action="/courses" method="post">
+      <label for="name">Course Title</label>
+      <input id="title" name="title" type="text">
+
+      <label for="name">Course number</label>
+      <input id="course_number" name="course_number" type="text">
+
+      <button type="submit">Add course</button>
+    </form>
+
+    <h1>View Students</h1>
+    #foreach ($student in $students)
+      <li><a href="/students/$student.getId()">$student.getName()</a></li>
+      <li><a href="/students/$student.getId()">$student.getEnrollmentDate()</a></li>
+    #end
+
+    <h1>View Courses</h1>
+    #foreach ($course in $courses)
+      <li><a href="/courses/$course.getId()">$course.getTitle()</a></li>
+      <li><a href="/courses/$course.getId()">$course.getCourseNumber()</a></li>
+    #end
 </body>
