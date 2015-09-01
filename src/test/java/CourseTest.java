@@ -48,19 +48,19 @@ public class CourseTest {
     assertTrue(myStudent.equals(savedStudent));
  }
 
- //   @Test
- //   public void getStudents_returnsAllStudents_ArrayList() {
- //     Course myCourse = new Course("Intro to Bio");
- //     myCourse.save();
- //
- //     Student myStudent = new Student("Jake");
- //     myStudent.save();
- //
- //     myCourse.addStudent(myStudent);
- //     List savedStudents = myCourse.getStudents();
- //     assertEquals(savedStudents.size(), 1);
- //   }
- //
+   @Test
+   public void getStudents_returnsAllStudents_ArrayList() {
+     Course myCourse = new Course("Intro to Bio", 1);
+     myCourse.save();
+
+     Student myStudent = new Student("Jake", "0915");
+     myStudent.save();
+
+     myCourse.addStudent(myStudent);
+     List savedStudents = myCourse.getStudents();
+     assertEquals(savedStudents.size(), 1);
+   }
+
  //   @Test
  //   public void delete_deletesAllStudentsAndListsAssociations() {
  //     Course myCategory = new Course("Intro to Bio");
