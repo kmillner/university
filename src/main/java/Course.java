@@ -76,6 +76,7 @@ public class Course {
   public ArrayList<Student> getStudents() {
     try(Connection con = DB.sql2o.open()) {
       String sql ="SELECT student_id FROM student_courses WHERE course_id = :course_id";
+      //String sql = "SELECT courses.* FROM students JOIN student_courses ON (students.id = student_courses.student_id) JOIN courses ON (student_courses.course_id = courses.id) WHERE courses.id = :course_id";
       List<Integer> studentIds = con.createQuery(sql)
         .addParameter("course_id", this.getId())
         .executeAndFetch(Integer.class);

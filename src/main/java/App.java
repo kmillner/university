@@ -29,16 +29,22 @@ public class App {
     //   return new ModelAndView(model, layout);
     // }, new VelocityTemplateEngine());
     //
-    // get("/courses", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   List<Course> courses = Course.all();
-    //   model.put("courses", courses);
-    //   List<Student> students = Student.all();
-    //   model.put("students", students);
-    //   model.put("template", "templates/courses.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
+    get("/courses/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Course course = Course.find(id);
+      model.put("course", course);
+
+      // List<Course> courses = Course.all();
+      // model.put("course", courses);
+      // List<Student> students = Student.all();
+      // model.put("student", students);
+
+      model.put("allStudents", Student.all());
+      model.put("template", "templates/courses.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/students/:id", (request,response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int id = Integer.parseInt(request.params("id"));
@@ -53,7 +59,7 @@ public class App {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
     //   int id = Integer.parseInt(request.params("id"));
     //   Course course = Category.find(id);
-    //   model.put("category", category);
+    //   model.put("courses", category);
     //   model.put("allTasks", Student.all());
     //   model.put("template", "templates/category.vtl");
     //   return new ModelAndView(model, layout);
@@ -61,7 +67,7 @@ public class App {
     //
     // // post("/students/:id/edit", (request, response) -> {
     // //   HashMap<String, Object> model = new HashMap<String, Object>();
-    // //   int taskId = Integer.parseInt(request.queryParams("task_id"));
+    // //   int studentId = Integer.parseInt(request.queryParams("task_id"));
     // //   Student student = Student.find(ta
     // //   int categoryId = Integer.parseInt(request.queryParams("category_id"));
     // //   Category category = Category.find(categoryId);
@@ -116,15 +122,15 @@ public class App {
     //  return new ModelAndView(model, layout);
   }); //new VelocityTemplateEngine());
     //
-    // post("/add_tasks", (request, response) -> {
-    //   int taskId = Integer.parseInt(request.queryParams("task_id"));
-    //   int categoryId = Integer.parseInt(request.queryParams("category_id"));
-    //   Course category = Category.find(categoryId);
-    //   Student task = Student.find(taskId);
-    //   category.addTask(task);
-    //   response.redirect("/courses/" + categoryId);
-    //   return null;
-    // });
+    post("/add_student", (request, response) -> {
+      int studentId = Integer.parseInt(request.queryParams("student_id"));
+      int coursesId = Integer.parseInt(request.queryParams("course_id"));
+      Course courses = Course.find(coursesId);
+      Student student = Student.find(studentId);
+      courses.addStudent(student);
+      response.redirect("/courses/" + coursesId);
+      return null;
+    });
     //
     post("/add_courses", (request, response) -> {
       int studentId = Integer.parseInt(request.queryParams("student_id"));
