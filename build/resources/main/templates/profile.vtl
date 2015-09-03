@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+    <h1>Student Profiles</h1>
+    <p>Select your name from the list below to edit your profile.</p>
+
+  <table class="table table-striped">
+  <tr>
+    <td>Name</td>
+  </tr>
+    #foreach ($student in $students)
+      <td><a href="/students/$student.getId()">$student.getName()</a></td>
+    </tr>
+    </tr>
+    #end
+  </table>

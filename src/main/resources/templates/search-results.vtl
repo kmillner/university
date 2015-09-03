@@ -1,0 +1,24 @@
+<head>
+    <title>University Registrar</title>
+</head>
+<body>
+
+
+    <h1>Search Results</h1>
+#if($courses)
+    <table class="table table-striped">
+    <tr>
+      <td>Name</td>
+      <td>Course Number</td>
+    </tr>
+    #foreach ($course in $courses)
+      <td><a href="/courses/$course.getId()">$course.getTitle()</a></td>
+      <td><a href="/courses/$course.getId()">$course.getCourseNumber()</a></td>
+    </tr>
+    #end
+  </table>
+#else
+  <p>Sorry, there are no results for this search!</p>
+#end
+
+</body>

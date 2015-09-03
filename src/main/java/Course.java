@@ -93,28 +93,39 @@ public class Course {
       return students;
     }
   }
-  //
-  // public void delete() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String deleteQuery = "DELETE FROM courses WHERE id = :id;";
-  //       con.createQuery(deleteQuery)
-  //         .addParameter("id", id)
-  //         .executeUpdate();
-  //
-  //     String joinDeleteQuery = "DELETE FROM student_courses WHERE Course_id = :CourseId";
-  //       con.createQuery(joinDeleteQuery)
-  //       .addParameter("CourseId", this.getId())
-  //       .executeUpdate();
-  //   }
-  // }
-  //
-  // public void update(String title) {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "UPDATE courses SET title = :title WHERE id= :id";
-  //     con.createQuery(sql)
-  //     .addParameter("title", title)
-  //     .addParameter("id", id)
-  //     .executeUpdate();
-  //   }
-  // }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteQuery = "DELETE FROM courses WHERE id = :id;";
+        con.createQuery(deleteQuery)
+          .addParameter("id", id)
+          .executeUpdate();
+
+      String joinDeleteQuery = "DELETE FROM student_courses WHERE Course_id = :CourseId";
+        con.createQuery(joinDeleteQuery)
+        .addParameter("CourseId", this.getId())
+        .executeUpdate();
+    }
+  }
+
+  public void edit(String title) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE courses SET title = :title WHERE id= :id";
+      con.createQuery(sql)
+      .addParameter("title", title)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+  public static List<Course> search(String search) {
+      String sql = "SELECT * FROM courses WHERE title LIKE '%" + search + "%'";
+      List<Course> searchResults;
+      try(Connection con = DB.sql2o.open()) {
+      searchResults = con.createQuery(sql)
+      .executeAndFetch(Course.class);
+    }
+    return searchResults;
+  }
+
 }

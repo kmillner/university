@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<h1>$student.getName()</h1>
+
+<form action="/students/$student.getId()/edit" method="post">
+  <input id="id" name="id" type="hidden" value="$student.getId()">
+  <label for="name">Student Name</label>
+  <input id="name" name="name" type="text">
+
+  <label for="enrollment_date">Date of Enrollment</label>
+  <input id="enrollment_date" name="enrollment_date" type="date">
+
+
+  <button type="submit">Edit Student</button>
+</form>
+<br>
+<br>
+ <p><a href='/'>Home</a></p>

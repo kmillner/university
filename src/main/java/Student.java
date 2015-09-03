@@ -6,6 +6,9 @@ public class Student {
   private int id;
   private String name;
   private String enrollment_date;
+  private String gender;
+  private int age;
+  private String bio;
 
   public int getId() {
     return id;
@@ -19,9 +22,24 @@ public class Student {
     return enrollment_date;
   }
 
-  public Student(String name, String enrollment_date) {
+  public String getGender(){
+    return gender;
+  }
+
+  public int getAge(){
+    return age;
+  }
+
+  public String getBio(){
+    return bio;
+  }
+
+  public Student(String name, String enrollment_date, String gender, int age, String bio) {
     this.name = name;
     this.enrollment_date = enrollment_date;
+    this.gender = gender;
+    this.age = age;
+    this.bio = bio;
   }
 
   @Override
@@ -32,12 +50,15 @@ public class Student {
       Student newStudent = (Student) otherStudent;
       return this.getName().equals(newStudent.getName()) &&
              this.getId() == newStudent.getId() &&
-             this.getEnrollmentDate().equals(newStudent.getEnrollmentDate());
+             this.getEnrollmentDate().equals(newStudent.getEnrollmentDate()) &&
+             this.getGender().equals(newStudent.getGender()) &&
+             this.getAge() == (newStudent.getAge()) &&
+             this.getBio().equals(newStudent.getBio());
     }
   }
 
   public static List<Student> all() {
-    String sql = "SELECT id, name, enrollment_date FROM students";
+    String sql = "SELECT id, name, enrollment_date, gender, age, bio FROM students";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Student.class);
     }
@@ -45,10 +66,13 @@ public class Student {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO students(name, enrollment_date) VALUES (:name, :enrollment_date)";
+      String sql = "INSERT INTO students(name, enrollment_date, gender, age, bio) VALUES (:name, :enrollment_date, :gender, :age, :bio)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", name)
         .addParameter("enrollment_date", enrollment_date)
+        .addParameter("gender", gender)
+        .addParameter("age", age)
+        .addParameter("bio", bio)
         .executeUpdate()
         .getKey();
     }
@@ -64,13 +88,16 @@ public class Student {
     }
   }
 
-  public void update(String name, int enrollment_date) {
+  public void update(String name, String enrollment_date, String gender, int age, String bio) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE students SET (name, enrollment_date) = (:name, :enrollment_date) WHERE id = :id";
+      String sql = "UPDATE students SET (name, enrollment_date, gender, age, bio) = (:name, :enrollment_date, :gender, :age, :bio) WHERE id = :id";
       con.createQuery(sql)
         .addParameter("name", name)
         .addParameter("id", id)
         .addParameter("enrollment_date", enrollment_date)
+        .addParameter("gender", gender)
+        .addParameter("age", age)
+        .addParameter("bio", bio)
         .executeUpdate();
     }
   }
@@ -82,9 +109,9 @@ public class Student {
         .addParameter("id", id)
         .executeUpdate();
 
-    String joinDeleteQuery = "DELETE FROM student_courses WHERE student_id = :studentId";
+    String joinDeleteQuery = "DELETE FROM student_courses WHERE student_id = :student_id";
       con.createQuery(joinDeleteQuery)
-        .addParameter("StudentId", this.getId())
+        .addParameter("student_id", this.getId())
         .executeUpdate();
     }
   }

@@ -1,0 +1,26 @@
+
+    <h1>View Courses</h1>
+
+    <P>Select a course to view roster:</p>
+
+    <table class="table table-striped">
+    <tr>
+      <td>Name</td>
+      <td>Course Number</td>
+      <td>Delete</td>
+      <td>Edit</td>
+    </tr>
+    #foreach ($course in $courses)
+      <td><a href="/courses/$course.getId()">$course.getTitle()</a></td>
+      <td><a href="/courses/$course.getId()">$course.getCourseNumber()</a></td>
+          <td><form action="/courses/$course.getId()/delete" method="post">
+            <button type="submit" class="btn btn-primary">
+            <i class="glyphicon glyphicon-trash"></i></span>
+          </form></td>
+          <td><form action="/courses/$course.getId()/edit-courses" method="get">
+            <button type="submit" class="btn btn-primary">
+            <i class="glyphicon glyphicon-pencil"></i></span>
+          </form></td>
+    </tr>
+    #end
+  </table>

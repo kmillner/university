@@ -1,0 +1,22 @@
+    <h1>Add Student</h1>
+
+    <form action="/students" method="post">
+      <label for="name">Student Name</label>
+      <input id="name" name="name" type="text">
+      <br>
+      <label for="enrollment_date">Date of Enrollment</label>
+      <input id="enrollment_date" name="enrollment_date" type="date">
+      <br>
+      <label for="name">Gender (optional)</label>
+      <label class="radio-inline"><input type="radio" name="gender" id="gender" value="Male">Male</label>
+      <label class="radio-inline"><input type="radio" name="gender" id="gender" value="Female">Female</label>
+      <label class="radio-inline"><input type="radio" name="gender" id="gender" value="Non-conforming">Gender Nonconforming</label>
+      <br>
+      <label for="name">Age</label>
+      <input id="age" name="age" type="text">
+      <br>
+      <label for="name">Bio</label>
+      <textarea class="form-control" rows="5" id="bio" name="bio"></textarea>
+
+      <button type="submit">Add Student</button>
+    </form>

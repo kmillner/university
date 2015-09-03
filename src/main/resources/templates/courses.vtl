@@ -2,11 +2,13 @@
 
 #if($course.getStudents())
   <p>Here are the students in this course:</p>
-  <ul>
+  <ol>
+  <div class="list-group">
     #foreach($student in $course.getStudents())
-      <li>$student.getName()<li>
+    <a href="/students/$student.getId()" class="list-group-item">
+       <span class="glyphicon glyphicon-user"></span> $student.getName() </a>
     #end
-  </ul>
+  </div>
 #end
 
 <h4>Add a student to this course:</h4>

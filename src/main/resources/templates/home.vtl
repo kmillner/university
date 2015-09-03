@@ -2,57 +2,16 @@
     <title>University Registrar</title>
 </head>
 <body>
-    <h1>Add Student</h1>
 
-    <form action="/students" method="post">
-      <label for="name">Student Name</label>
-      <input id="name" name="name" type="text">
+    <center><h1>Welcome!</h1></center>
 
-      <label for="enrollment_date">Date of Enrollment</label>
-      <input id="enrollment_date" name="enrollment_date" type="date">
+    <center><img src="/img/hogwarts.jpg" height="350", width="350"></center>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et consequat magna. Pellentesque condimentum dui vitae lacus porta, eu hendrerit lectus imperdiet. Quisque eget scelerisque est. In venenatis fermentum diam, sit amet venenatis ante cursus nec. Morbi quis mauris a nisl sollicitudin gravida. Maecenas bibendum mauris eu felis eleifend, eget tempor augue ultricies. Cras bibendum condimentum ipsum, at tristique neque bibendum at.</p>
+<br>
+Phasellus vitae imperdiet velit, non bibendum eros. Vivamus ac ante ligula. Duis elementum finibus est nec laoreet. Nulla facilisi. Nunc molestie nulla nec viverra lacinia. Proin eget facilisis mi. Aliquam finibus pharetra diam non volutpat. Curabitur viverra ultrices dignissim. Duis nec arcu et ante sagittis hendrerit hendrerit vel tellus. Donec non nibh sit amet urna pellentesque elementum. Integer mattis velit erat, ut posuere ante congue ac. Aliquam erat dolor, facilisis a diam quis, laoreet rutrum ipsum. Pellentesque vel dignissim justo.<br><p>
 
-
-      <button type="submit">Add Student</button>
-    </form>
-    <h1>Add Course</h1>
-
-    <form action="/courses" method="post">
-      <label for="name">Course Title</label>
-      <input id="title" name="title" type="text">
-
-      <label for="name">Course number</label>
-      <input id="course_number" name="course_number" type="text">
-
-      <button type="submit">Add course</button>
-    </form>
-
-    <h1>View Students</h1>
-
-  <table class="table table-striped">
-  <tr>
-    <td>Name</td>
-    <td>Enrollment Date</td>
-  </tr>
-    #foreach ($student in $students)
-      <td><a href="/students/$student.getId()">$student.getName()</a></td>
-      <td><a href="/students/$student.getId()">$student.getEnrollmentDate()</a></td>
-    </tr>
-    #end
-  </table>
-
-    <h1>View Courses</h1>
-
-    <table class="table table-striped">
-    <tr>
-      <td>Name</td>
-      <td>Course Number</td>
-      <td>Students in Course</td>
-    </tr>
-    #foreach ($course in $courses)
-      <td><a href="/courses/$course.getId()">$course.getTitle()</a></td>
-      <td><a href="/courses/$course.getId()">$course.getCourseNumber()</a></td>
-    </tr>
-    #end
-  </table>
+Ut a iaculis nisl, varius eleifend leo. Pellentesque varius felis eu ligula condimentum mattis. Vivamus dictum porta viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mattis turpis. Nunc malesuada eget lacus vitae sodales. Nam id mollis augue, ac dignissim risus. Curabitur odio lorem, porta et ultrices sit amet, venenatis in nunc. Ut eget justo rhoncus, semper massa commodo, rhoncus tellus. Pellentesque sodales dolor rhoncus orci convallis, quis consectetur orci varius. Etiam viverra, mi ut vulputate aliquet, massa lectus luctus nibh, et hendrerit quam tellus sodales quam. Morbi suscipit malesuada ante, consequat molestie enim mattis vitae. Aliquam erat volutpat. Aenean augue urna, finibus ac ante et, semper dignissim sapien. Donec molestie leo quis bibendum lacinia. Nullam arcu libero, convallis non turpis nec, convallis efficitur leo.
+<br>
+Vestibulum ornare maximus enim non placerat. Vivamus ultrices orci quis consequat sollicitudin. Quisque quis consequat dui. Cras dolor risus, tincidunt non pulvinar eget, vestibulum sit amet augue. Maecenas orci libero, sodales a turpis at, aliquam interdum justo. Sed eget nisi sit amet neque bibendum gravida ac vitae eros. Duis a erat ut neque luctus pellentesque sit amet vel odio.<br>
 
 </body>
